@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { push } from "connected-react-router";
 
 import {
   CREATE_USER_ERROR,
@@ -14,10 +15,13 @@ export const signupNewUser = (userData) => (dispatch) => {
     .then((response) => {
       toast.success(
         "Account for " +
-          userData.username +
+          userData.first_name +
+          " " +
+          userData.last_name +
           " created successfully. Please login."
       );
       dispatch({ type: CREATE_USER_SUCCESS });
+      dispatch(push("/login"));
     })
     .catch((error) => {
       if (error.resposne) {

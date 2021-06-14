@@ -20,6 +20,9 @@ class Signup extends Component {
     this.state = {
       username: "",
       password: "",
+      first_name: "",
+      last_name: "",
+      email: "",
     };
   }
   onChange = (e) => {
@@ -29,8 +32,12 @@ class Signup extends Component {
   // update function to call the action
   onSignupClick = () => {
     const userData = {
+      email: this.state.email,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
       username: this.state.username,
       password: this.state.password,
+      confirm_password: this.state.confirm_password,
     };
     this.props.signupNewUser(userData); // <-- signup new user request
   };
@@ -57,8 +64,53 @@ class Signup extends Component {
                 </FormControl.Feedback>
               </Form.Group>
 
+              <Form.Group controlId="firstNameId">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  isInvalid={this.props.createUser.firstNameError}
+                  type="text"
+                  name="first_name"
+                  placeholder="Enter First Name"
+                  value={this.first_name}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {this.props.createUser.firstNameError}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group controlId="lastNameId">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  isInvalid={this.props.createUser.lastNameError}
+                  type="text"
+                  name="last_name"
+                  placeholder="Enter Last Name"
+                  value={this.last_name}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {this.props.createUser.lastNameError}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group controlId="emailId">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  isInvalid={this.props.createUser.emailError}
+                  type="email"
+                  name="email"
+                  placeholder="Enter E-mail"
+                  value={this.email}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {this.props.createUser.emailError}
+                </Form.Control.Feedback>
+              </Form.Group>
+
               <Form.Group controlId="passwordId">
-                <Form.Label>Your password</Form.Label>
+                <Form.Label>Password</Form.Label>
                 <Form.Control
                   isInvalid={this.props.createUser.passwordError}
                   type="password"
@@ -69,6 +121,21 @@ class Signup extends Component {
                 />
                 <Form.Control.Feedback type="invalid">
                   {this.props.createUser.passwordError}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group controlId="confirmPasswordId">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  isInvalid={this.props.createUser.confirmpasswordError}
+                  type="password"
+                  name="confirm_password"
+                  placeholder="Confirm password"
+                  value={this.confirm_password}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {this.props.createUser.confirmpasswordError}
                 </Form.Control.Feedback>
               </Form.Group>
             </Form>

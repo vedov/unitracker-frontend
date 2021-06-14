@@ -3,9 +3,10 @@ import Root from "./Root";
 import WelcomePage from "./pages/welcomePage/welcomePage";
 import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-
+import requireAuth from "./utils/RequireAuth";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8000";
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/" component={WelcomePage} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/dashboard" component={requireAuth(Dashboard)} />
         <Route path="/home" />
         <Route path="/remoterecords" />
         <Route path="/settings" />
