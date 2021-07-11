@@ -1,0 +1,9 @@
+.modal__button {
+  position: absolute !important;
+  top: 9px;
+  right: 0;
+}
+
+.modal__title {
+  margin-left: -8px !important;
+}

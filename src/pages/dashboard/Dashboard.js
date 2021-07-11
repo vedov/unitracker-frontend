@@ -7,6 +7,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { logout } from "../../components/login/LoginActions";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import Button from "@material-ui/core/Button";
+import Employees from "../../components/dashboard/Employees.js";
 
 class Dashboard extends Component {
   constructor() {
@@ -44,7 +45,9 @@ class Dashboard extends Component {
             <Nav.Link onClick={this.onLogout}>Logout</Nav.Link>
           </Navbar.Collapse>
         </Navbar>
-        <Container>{this.state.sidebar && <h1>aaaaaa</h1>}</Container>
+        <Container>
+          <Employees />
+        </Container>
       </div>
     );
   }
